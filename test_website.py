@@ -36,3 +36,8 @@ def test_post_to_search_product():
     assert type(json_response.get('products')) == list
 
 
+def test_post_to_search_product_without_search_product_parameter():
+    response = requests.post("https://automationexercise.com/api/searchProduct")
+    json_response = response.json()
+    assert json_response.get('responseCode') == 400
+    assert json_response.get('message') == 'Bad request, search_product parameter is missing in POST request.'
