@@ -15,13 +15,13 @@ def test_post_to_all_products_list():
     assert json_response.get('message') == 'This request method is not supported.'
 
 
-def test_Get_All_Brtands_List():
+def test_get_all_brands_list():
     response = requests.get('https://automationexercise.com/api/brandsList')
     json_response = response.json()
     assert json_response.get('responseCode') == 200
     assert type(json_response.get('brands')) == list
 
-def test_PUT_To_All_Brands_List():
+def test_put_to_all_brands_list():
     response = requests.put("https://automationexercise.com/api/brandsList")
     json_response = response.json()
     assert json_response.get('responseCode') == 405
