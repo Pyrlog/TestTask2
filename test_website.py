@@ -78,6 +78,12 @@ def test_delete_to_verify_login():
     assert json_response.get('message') == 'This request method is not supported.'
 
 
+def test_put_method_to_update_user_account():
+    response = requests.put("https://automationexercise.com/api/updateAccount", data = {"name": "John", "email": "johndoe7654@gmail.com", "password": "password", "title": "Mr", "birth_date": "04", "birth_month": "08", "birth_year": "1974", "firstname": "John", "lastname": "Doe", "company": "Best_company", "address1": "Pushkina_5", "address2": "7", "country": "USA", "zipcode": "1111", "state": "Texas", "city": "Houston", "mobile_number": "123456"})
+    json_response = response.json()
+    assert json_response.get('responseCode') == 200
+    assert json_response.get('message') == 'User updated!'
+
 
 def test_delete_method_to_delete_user_account():
     response = requests.delete("https://automationexercise.com/api/deleteAccount", data = {"email": "johndoe7654@gmail.com", "password": "password"})
