@@ -70,6 +70,13 @@ def test_post_to_verify_login_with_invalid_details():
     assert json_response.get('message') == 'User not found!'
 
 
+def test_delete_method_to_delete_user_account():
+    response = requests.delete("https://automationexercise.com/api/deleteAccount", data = {"email": "johndoe765@gmail.com", "password": "password"})
+    json_response = response.json()
+    assert json_response.get('responseCode') == 200
+    assert json_response.get('message') == 'Account deleted!'
+
+
 #def test_post_to_create_register_user_acount():
 #    response = requests.post("https://automationexercise.com/api/createAccount", data = {"name": "John", "email": "johndoe765@gmail.com", "password": "password", "title": "Mr", "birth_date": "01", "birth_month": "01", "birth_year": "1991", "firstname": "John", "lastname": "Doe", "company": "Best_company", "address1": "Pushkina_5", "address2": "7", "country": "USA", "zipcode": "1111", "state": "Texas", "city": "Houston", "mobile_number": "123456"})
 #    json_response = response.json()
