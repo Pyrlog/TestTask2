@@ -43,7 +43,7 @@ def test_post_to_search_product_without_search_product_parameter():
     assert json_response.get('message') == 'Bad request, search_product parameter is missing in POST request.'
 
 
-def test_post_to_create_register_user_acount():
+def test_post_to_create_register_user_account():
     response = requests.post("https://automationexercise.com/api/createAccount", data = {"name": "John", "email": "johndoe7654@gmail.com", "password": "password", "title": "Mr", "birth_date": "01", "birth_month": "01", "birth_year": "1991", "firstname": "John", "lastname": "Doe", "company": "Best_company", "address1": "Pushkina_5", "address2": "7", "country": "USA", "zipcode": "1111", "state": "Texas", "city": "Houston", "mobile_number": "123456"})
     json_response = response.json()
     assert json_response.get('responseCode') == 201
@@ -89,7 +89,8 @@ def test_get_user_account_detail_by_email():
     response = requests.get("https://automationexercise.com/api/getUserDetailByEmail", params = {"email": "johndoe7654@gmail.com"})
     json_response = response.json()
     assert json_response.get('responseCode') == 200
-    data = json_response
+    assert 'user' in json_response
+    assert json_response.get('user').get('email') == "johndoe7654@gmail.com"
 
 
 def test_delete_method_to_delete_user_account():
