@@ -85,6 +85,13 @@ def test_put_method_to_update_user_account():
     assert json_response.get('message') == 'User updated!'
 
 
+def test_get_user_account_detail_by_email():
+    response = requests.get("https://automationexercise.com/api/getUserDetailByEmail", params = {"email": "johndoe7654@gmail.com"})
+    json_response = response.json()
+    assert json_response.get('responseCode') == 200
+    data = json_response
+
+
 def test_delete_method_to_delete_user_account():
     response = requests.delete("https://automationexercise.com/api/deleteAccount", data = {"email": "johndoe7654@gmail.com", "password": "password"})
     json_response = response.json()
