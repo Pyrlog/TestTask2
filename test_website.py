@@ -1,8 +1,8 @@
 import requests
 
 
-def test_get_all_products_list():
-    response = requests.get('https://automationexercise.com/api/productsList')
+def test_get_all_products_list(base_url):
+    response = requests.get(f'{base_url}productsList')
     json_response = response.json()
     assert json_response.get('responseCode') == 200
     assert type(json_response.get('products')) == list
